@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSIR-IIIM Internship Presentation</title>
+  <style>
+    /* Base Styling */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Smooth fade-in for whole page */
+    body {
+      animation: fadeInPage 1.5s ease-in-out;
+    }
+    @keyframes fadeInPage {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Slide Container */
+    .slide {
+      width: 90%;
+      max-width: 950px;
+      margin: 60px auto;
+      background: rgba(255, 255, 255, 0.97);
+      color: #2c3e50;
+      border-radius: 20px;
+      padding: 50px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .slide:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 35px 70px rgba(0,0,0,0.25);
+    }
+
+    /* Heading Styles */
+    .slide h1, .slide h2 {
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+      align-self: center;
+    }
+
+    .slide h1 {
+      font-size: 2.8em;
+      color: #2c3e50;
+    }
+
+    .slide h1::after {
+      content: '';
+      display: block;
+      height: 4px;
+      width: 80px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      margin: 10px auto 0;
+      border-radius: 2px;
+      animation: expandLine 1.5s ease forwards;
+    }
+
+    @keyframes expandLine {
+      from { width: 0; opacity: 0; }
+      to { width: 80px; opacity: 1; }
+    }
+
+    .slide h2 {
+      font-size: 2.2em;
+      color: #34495e;
+    }
+
+    .slide h3 {
+      color: #003366; /* changed from #667eea to dark blue */
+      font-size: 1.4em;
+      margin-bottom: 15px;
+    }
+
+    /* Content Styling */
+    .content {
+      font-size: 1.1em;
+      line-height: 1.7;
+      animation: fadeUp 1s ease;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    li:hover {
+      transform: translateX(5px);
+      color: #764ba2;
+    }
+
+    /* Highlight Styling */
+    .highlight {
+      background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+      padding: 3px 8px;
+      border-radius: 6px;
+      color: #2c3e50;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: background 0.3s ease;
+    }
+    .highlight:hover {
+      background: linear-gradient(120deg, #ffd6e3 0%, #a8edea 100%);
+    }
+
+    /* Grid Cards */
+    .model-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin: 25px 0;
+    }
+
+    .model-card {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 5px solid #667eea;
+      transition: all 0.3s ease;
+    }
+    .model-card:hover {
+      background: #eef1ff;
+      transform: scale(1.03);
+    }
+
+    /* ensure slide 3 & 7 card text is dark blue */
+    .slide:nth-of-type(3) .model-card,
+    .slide:nth-of-type(7) .model-card {
+      color: #003366;
+    }
+
+    /* Table Styling */
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .results-table th, .results-table td {
+      border: 1px solid #ddd;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .results-table th {
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      color: white;
+    }
+
+    .results-table tr:nth-child(even) {
+      background: #f4f6fb;
+    }
+
+    /* Logo Section */
+    .logo-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 25px 0;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #667eea;
+    }
+
+    /* Callout Box */
+    .callout {
+      margin: 30px 0;
+      padding: 20px;
+      background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+      border-radius: 12px;
+      color: #2c3e50;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .callout:hover {
+      transform: scale(1.02);
+    }
+  
+/* Slide Theme Backgrounds with Images */
+.slide:nth-of-type(1) {
+  background: url('colorful-geometric-background-liquid-color-background-design-fluid-shapes-composition-free-photo.jpg') no-repeat center center/cover;
+  color: #ffffff;
+}
+
+.slide:nth-of-type(n+2) {
+  background: url('ppt-backgrounds-2340388_1280.webp') no-repeat center center/cover;
+  color: #ffffff;
+}
+
+</style>
+</head>
+<body>
+  <!-- (Same HTML content as before remains unchanged) -->
+   <!-- Slide 1: Title -->
+    <div class="slide">
+    <h1>Deep Analysis on Quantum versus Classical Machine Learning</h1>
+    <div class="center content">
+        <p style="font-size: 1.3em; margin: 30px 0;"><strong>Internship Research Project</strong></p>
+        <p style="font-size: 1.2em;">Submitted by: <span class="highlight">Ayush Jha</span></p>
+        <p>B.Tech (7th Semester), Delhi Technological University</p>
+        <div class="logo-section">
+            <div class="institution" style="color: black;">CSIR - Indian Institute of Integrative Medicine</div>
+            <div class="institution" style="color: black;">June - August 2025</div>
+        </div>
+        <p style="margin-top: 30px;">Under the guidance of: <span class="highlight">Er. Shaghaf Ansari</span><br>
+        Principal Scientist, RMBD & IST Division</p>
+    </div>
+</div>
+
+    <!-- Slide 2: Project Overview -->
+    <div class="slide">
+        <h2>Project Overview</h2>
+        <div class="content">
+            <h3>Research Objective</h3>
+            <p>Conduct a <span class="highlight">rigorous empirical comparison</span> between Quantum Machine Learning (QML) models and Classical Machine Learning approaches on a complex Natural Language Processing task.</p>
+            
+            <h3>Dataset & Task</h3>
+            <ul>
+                <li><strong>GoEmotions Dataset</strong> - Google Research multi-label emotion classification</li>
+                <li><strong>28 emotion labels</strong> with severe class imbalance</li>
+                <li><strong>211,000 training examples</strong>, 5,000 validation, 4,000 test</li>
+            </ul>
+            
+            <h3>Key Innovation</h3>
+            <p>Standardized evaluation pipeline using <span class="highlight">BERT-extracted features</span> to ensure fair comparison across all model architectures.</p>
+        </div>
+    </div>
+
+    <!-- Slide 3: Models Implemented -->
+    <div class="slide">
+        <h2>Models Implemented</h2>
+        <div class="model-grid">
+            <div class="model-card">
+                <h3>Quantum-Hybrid Models</h3>
+                <ul>
+                    <li><strong>MLC-QNN:</strong> Hybrid Quantum-Classical Neural Network</li>
+                    <li><strong>QKSVM:</strong> Quantum Kernel Support Vector Machine</li>
+                    <li><strong>DRC:</strong> Data-Reuploading Classifier</li>
+                </ul>
+            </div>
+            <div class="model-card">
+                <h3>Classical Baselines</h3>
+                <ul>
+                    <li><strong>Fine-tuned BERT:</strong> State-of-the-art transformer</li>
+                    <li><strong>Classical NN:</strong> Direct comparison architecture</li>
+                    <li><strong>XGBoost:</strong> Gradient boosting ensemble</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <h3>Technology Stack</h3>
+            <p><span class="highlight">PyTorch</span>, <span class="highlight">PennyLane</span>, <span class="highlight">Qiskit</span>, <span class="highlight">Transformers</span>, <span class="highlight">Scikit-Learn</span>, <span class="highlight">XGBoost</span></p>
+        </div>
+    </div>
+
+    <!-- Slide 4: Methodology -->
+    <div class="slide">
+        <h2>Research Methodology</h2>
+        <div class="content">
+            <h3>Standardized Pipeline</h3>
+            <ul>
+                <li><strong>Feature Extraction:</strong> BERT-base-uncased → 768-dimensional embeddings</li>
+                <li><strong>Data Preprocessing:</strong> Consistent splits and label encoding</li>
+                <li><strong>Evaluation Metric:</strong> Macro F1-Score (handles class imbalance)</li>
+                <li><strong>Reproducibility:</strong> Fixed random seeds, version control</li>
+            </ul>
+            
+            <h3>Key Challenges Addressed</h3>
+            <ul>
+                <li><span class="highlight">Severe Class Imbalance:</span> Weighted loss functions and appropriate metrics</li>
+                <li><span class="highlight">Computational Constraints:</span> Efficient quantum simulation strategies</li>
+                <li><span class="highlight">Quantum-Classical Integration:</span> Seamless gradient flow across frameworks</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 5: Technical Implementation -->
+    <div class="slide">
+        <h2>Technical Implementation</h2>
+        <div class="content">
+            <h3>Quantum Circuit Design</h3>
+            <ul>
+                <li><strong>Parameterized Quantum Circuits (PQCs)</strong> using StronglyEntanglingLayers</li>
+                <li><strong>Quantum Feature Maps</strong> with AngleEmbedding for classical data encoding</li>
+                <li><strong>Hybrid Training</strong> with automatic differentiation across quantum-classical interfaces</li>
+            </ul>
+            
+            <h3>Classical Implementation</h3>
+            <ul>
+                <li><strong>End-to-end BERT Fine-tuning</strong> for SOTA baseline</li>
+                <li><strong>Equivalent Architecture Design</strong> for fair capacity comparison</li>
+                <li><strong>Advanced Optimization</strong> with learning rate scheduling and gradient clipping</li>
+            </ul>
+            
+            <h3>Evaluation Framework</h3>
+            <p><span class="highlight">Statistical significance testing</span>, <span class="highlight">per-label analysis</span>, and <span class="highlight">training dynamics monitoring</span></p>
+        </div>
+    </div>
+
+    <!-- Slide 6: Key Findings -->
+    <div class="slide">
+        <h2>Key Research Findings</h2>
+        <div class="content">
+            <h3>Performance Analysis</h3>
+            <ul>
+                <li><strong>Classical models</strong> demonstrated superior performance on this NLP task</li>
+                <li><strong>Fine-tuned BERT</strong> achieved state-of-the-art results as expected</li>
+                <li><strong>Quantum approaches</strong> showed promise but faced current hardware limitations</li>
+            </ul>
+            
+            <h3>Technical Insights</h3>
+            <ul>
+                <li><span class="highlight">Computational Bottlenecks:</span> Quantum simulation scales poorly with problem size</li>
+                <li><span class="highlight">Feature Transformation:</span> Quantum circuits can learn non-trivial transformations</li>
+                <li><span class="highlight">Hybrid Potential:</span> Integration frameworks show promise for future development</li>
+            </ul>
+            
+            <h3>Research Contribution</h3>
+            <p>Established <span class="highlight">rigorous benchmarking methodologies</span> and provided <span class="highlight">empirical evidence</span> about current QML capabilities and limitations.</p>
+        </div>
+    </div>
+
+    <!-- Slide 7: Challenges & Solutions -->
+    <div class="slide">
+        <h2>Challenges Faced & Solutions</h2>
+        <div class="content">
+            <div class="model-grid">
+                <div class="model-card">
+                    <h3>Challenges</h3>
+                    <ul>
+                        <li><strong>Conceptual Leap:</strong> Classical ML to quantum computing</li>
+                        <li><strong>Integration Issues:</strong> PyTorch ↔ PennyLane interfaces</li>
+                        <li><strong>Computational Limits:</strong> O(n²) quantum kernel scaling</li>
+                        <li><strong>Data Imbalance:</strong> 28-class emotion recognition</li>
+                    </ul>
+                </div>
+                <div class="model-card">
+                    <h3>Solutions</h3>
+                    <ul>
+                        <li><strong>Systematic Learning:</strong> Literature review + hands-on practice</li>
+                        <li><strong>Debugging Framework:</strong> Gradient checking + visualization tools</li>
+                        <li><strong>Efficient Sampling:</strong> Strategic subset selection</li>
+                        <li><strong>Weighted Metrics:</strong> Macro F1-Score + pos_weight</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Learning Outcomes -->
+    <div class="slide">
+        <h2>Learning Outcomes</h2>
+        <div class="content">
+            <h3>Technical Skills Developed</h3>
+            <ul>
+                <li><span class="highlight">Quantum Machine Learning:</span> Circuit design, hybrid architectures, quantum kernels</li>
+                <li><span class="highlight">Advanced ML Research:</span> Experimental design, statistical analysis, reproducible research</li>
+                <li><span class="highlight">Full-Stack Implementation:</span> End-to-end pipeline development and optimization</li>
+            </ul>
+            
+            <h3>Research Methodology</h3>
+            <ul>
+                <li><strong>Controlled Experiments:</strong> Fair comparison protocols and standardized evaluation</li>
+                <li><strong>Scientific Documentation:</strong> Comprehensive logging and version control</li>
+                <li><strong>Critical Analysis
+            </ul>
+            
+            <h3>Professional Growth</h3>
+            <p><span class="highlight">Independent research execution</span>, <span class="highlight">problem-solving skills</span>, and <span class="highlight">technical communication</span></p>
+        </div>
+    </div>
+
+    <!-- Slide 9: Future Directions -->
+    <div class="slide">
+        <h2>Future Research Directions</h2>
+        <div class="content">
+            <h3>Immediate Extensions</h3>
+            <ul>
+                <li><strong>Real Quantum Hardware:</strong> Deploy models on actual quantum processors</li>
+                <li><strong>Larger-Scale Studies:</strong> Extended hyperparameter optimization</li>
+                <li><strong>Advanced Architectures:</strong> More sophisticated hybrid designs</li>
+            </ul>
+            
+            <h3>Long-term Vision</h3>
+            <ul>
+                <li><span class="highlight">Domain Expansion:</span> Apply methodology to other ML tasks</li>
+                <li><span class="highlight">Hardware Co-design:</span> Algorithm-hardware optimization</li>
+                <li><span class="highlight">Publication Pipeline:</span> Conference submissions and peer review</li>
+            </ul>
+            
+            <h3>Research Impact</h3>
+            <p>Contribute to the scientific understanding of <span class="highlight">quantum advantage in machine learning</span> and establish benchmarking standards for the field.</p>
+        </div>
+    </div>
+
+    <!-- Slide 10: Conclusion -->
+    <div class="slide">
+        <h2>Conclusion</h2>
+        <div class="content center">
+            <h3>Key Achievements</h3>
+            <ul style="text-align: left; display: inline-block;">
+                <li>Successfully implemented <span class="highlight">6 different model architectures</span></li>
+                <li>Established <span class="highlight">rigorous benchmarking methodology</span></li>
+                <li>Conducted <span class="highlight">comprehensive empirical analysis</span></li>
+                <li>Generated <span class="highlight">publication-ready research</span></li>
+            </ul>
+            
+            <div style="margin: 30px 0; padding: 20px; background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%); border-radius: 10px; color: #2c3e50;">
+                <h3>Acknowledgments</h3>
+                <p><strong>Er. Shaghaf Ansari</strong> - Principal Scientist, RMBD & IST Division<br>
+                <strong>CSIR-IIIM Team</strong> - Collaborative research environment<br>
+                <strong>Delhi Technological University</strong> - Academic foundation</p>
+            </div>
+            
+            <p style="font-size: 1.2em; font-weight: bold;">This internship provided invaluable experience in cutting-edge AI research and established a strong foundation for future contributions to quantum machine learning.</p>
+        </div>
+    </div>
+  
+</body>
+</html>
